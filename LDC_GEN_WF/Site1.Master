@@ -1,0 +1,185 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="LDC_GEN_WF.Site1"%>
+
+<%@ Register Assembly="DevExpress.Web.v14.1, Version=14.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxGlobalEvents" TagPrefix="dx" %>
+
+<%@ Register Assembly="DevExpress.Web.v14.1, Version=14.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxLoadingPanel" TagPrefix="dx" %>
+<%@ Register Src="~/SessionControl/AutoRedirect.ascx" TagPrefix="uc1" TagName="AutoRedirect" %>
+
+
+<!DOCTYPE html>
+
+<head runat="server">
+    <title>LDC GnT Communication</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet" />
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600"
+        rel="stylesheet" />
+    <link href="css/font-awesome.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/pages/dashboard.css" rel="stylesheet" />
+    <link href="js/guidely/guidely.css" rel="stylesheet" />
+
+
+    <script type="text/javascript">
+        //This function will close the pop window
+        function ClosePopWindow() {
+            var paentWin = window.parent;
+            window.parent.PopWindow.Hide();
+        }
+
+    </script>
+
+</head>
+
+
+<body>
+    <form id="form1" runat="server">
+ <%--      <dx:ASPxLoadingPanel ID="ASPxLoadingPanel1" Theme="Moderno" Modal="true" ClientInstanceName="lp" runat="server"></dx:ASPxLoadingPanel>
+        <dx:ASPxGlobalEvents ID="ASPxGlobalEvents1" runat="server">
+            <ClientSideEvents ControlsInitialized="function(s,e){lp.Hide();}" />
+        </dx:ASPxGlobalEvents>
+           <script type="text/javascript">
+               lp.Show();
+               window.onbeforeunload = dobeforeunload;
+               function dobeforeunload() {
+                   lp.Show();
+               }
+    </script>--%>
+
+   <%--     AsyncPostBackTimeout="9999999" --%>
+       
+        <asp:ScriptManager ID="ScriptManager1" runat="server" ></asp:ScriptManager>
+
+         <uc1:AutoRedirect runat="server" ID="AutoRedirect" />
+
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <br />
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span
+                        class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                    </a><a class="brand" href="#">
+                        <img src="img/ess_logo.png" style="display:none"/>
+                     <%--   My Data Form--%>
+                        </a>
+                    <div class="nav-collapse">
+                        <%--<br />--%>
+                        <%--<ul class="nav pull-right">
+                         <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
+                                class="icon-user"></i>Help <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="FAQ.pdf">FAQ</a></li>
+                                </ul>
+                            </li>
+                        </ul>--%>
+                        <div style="text-align: right;color:black">
+
+                           <%--color : #f90;--%>
+                                 <asp:Label ID="lblSessionInfo" runat="server" style="font-weight:bold;color:white"/>
+                           
+
+                           
+
+                            <a target="_blank" href="FAQ.pdf"><img src="img/faq.jpg" style="width: 175px;display:none" /></a>
+                            <asp:LinkButton ID="lbtnLogout" runat="server" OnClick="lbtnLogout_Click">
+                               <img src="/img/logout-button-blue-hi.jpg" style="width: 100px;margin-left: 25px;" /></asp:LinkButton>
+                           
+                            
+
+                        </div>
+                    </div>
+                    <!--/.nav-collapse -->
+                </div>
+                <!-- /container -->
+            </div>
+            <!-- /navbar-inner -->
+        </div>
+        <!-- /navbar -->
+        <%-- <div class="subnavbar">
+            <div class="subnavbar-inner">
+                <div class="container">--%>
+        <%--  <ul class="mainnav">
+                        <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="icon-long-arrow-down"></i><span>Menu 1</span> <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="icons.html">Icons</a></li>
+                                <li><a href="faq.html">FAQ</a></li>
+                                <li><a href="pricing.html">Pricing Plans</a></li>
+                                <li><a href="login.html">Login</a></li>
+                                <li><a href="signup.html">Signup</a></li>
+                                <li><a href="error.html">404</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="icon-long-arrow-down"></i><span>Drops</span> <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="icons.html">Icons</a></li>
+                                <li><a href="faq.html">FAQ</a></li>
+                                <li><a href="pricing.html">Pricing Plans</a></li>
+                                <li><a href="login.html">Login</a></li>
+                                <li><a href="signup.html">Signup</a></li>
+                                <li><a href="error.html">404</a></li>
+                            </ul>
+                        </li>
+                        <li class="active"><a href="index.html"><i class="icon-dashboard"></i><span>Dashboard</span>
+                        </a></li>
+                        <li><a href="reports.html"><i class="icon-list-alt"></i><span>Reports</span> </a>
+                        </li>
+                        <li><a href="guidely.html"><i class="icon-facetime-video"></i><span>App Tour</span>
+                        </a></li>
+                        <li><a href="charts.html"><i class="icon-bar-chart"></i><span>Charts</span> </a>
+                        </li>
+                        <li><a href="shortcodes.html"><i class="icon-code"></i><span>Shortcodes</span> </a>
+                        </li>
+                    </ul>--%>
+        <%--  </div>
+                <!-- /container -->
+            </div>
+            <!-- /subnavbar-inner -->
+        </div>--%>
+        <br />
+        <br />
+
+        <div class="main">
+            <div class="main-inner">
+               <div class="container">
+
+                   <div class="row">
+
+                        <div class="span12">
+                            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                            </asp:ContentPlaceHolder>
+
+                     </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="footer">
+            <div class="footer-inner">
+                <div class="container">
+                    <div class="row">
+                        <div class="span12">
+                            Developed By KE - IT.
+                        </div>
+                        <!-- /span12 -->
+                    </div>
+                    <!-- /row -->
+                </div>
+                <!-- /container -->
+            </div>
+            <!-- /footer-inner -->
+        </div>
+    </form>
+    <script src="js/jquery-1.7.2.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+</body>
+</html>
